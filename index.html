@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>For You, Lulu 👑</title>
+    <title>For You, Lulu ❤️</title>
     <style>
         /* ---------- RESET ---------- */
         * {
@@ -17,79 +17,31 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(ellipse at 50% 30%, #1a0a0a, #2d0a1a, #1a0505);
+            background: #f5e6e8;
+            background-image: 
+                radial-gradient(circle at 20% 50%, rgba(233, 30, 99, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 50%, rgba(233, 30, 99, 0.05) 0%, transparent 50%);
             font-family: 'Georgia', 'Times New Roman', serif;
             padding: 20px;
             overflow: hidden;
             position: relative;
         }
 
-        /* ---------- STARS ---------- */
-        .stars {
+        /* ---------- PAPER TEXTURE ---------- */
+        body::before {
+            content: '';
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
+            background: 
+                url("data:image/svg+xml,%3Csvg width='60' height='60' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='60' height='60' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
             pointer-events: none;
             z-index: 0;
         }
-        .star {
-            position: absolute;
-            width: 3px;
-            height: 3px;
-            background: white;
-            border-radius: 50%;
-            animation: twinkle var(--duration) ease-in-out infinite alternate;
-            box-shadow: 0 0 6px rgba(255, 255, 255, 0.8);
-        }
-        @keyframes twinkle {
-            0% {
-                opacity: 0.2;
-                transform: scale(0.8);
-            }
-            100% {
-                opacity: 1;
-                transform: scale(1.3);
-            }
-        }
 
-        /* ---------- PETALS ---------- */
-        .petals {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-        .petal {
-            position: absolute;
-            font-size: 22px;
-            animation: fall linear infinite;
-            opacity: 0.5;
-            user-select: none;
-        }
-        @keyframes fall {
-            0% {
-                transform: translateY(-10vh) rotate(0deg) scale(0.5);
-                opacity: 0;
-            }
-            10% {
-                opacity: 0.6;
-            }
-            90% {
-                opacity: 0.5;
-            }
-            100% {
-                transform: translateY(110vh) rotate(720deg) scale(1);
-                opacity: 0;
-            }
-        }
-
-        /* ---------- FLOATING HEARTS ---------- */
+        /* ---------- FLOATING HEARTS (объёмные) ---------- */
         .floating-hearts {
             position: fixed;
             top: 0;
@@ -100,54 +52,46 @@
             z-index: 0;
             overflow: hidden;
         }
+
         .heart-float {
             position: absolute;
-            font-size: 26px;
+            font-size: 28px;
             animation: floatHeart linear infinite;
-            opacity: 0.4;
-            filter: drop-shadow(0 0 8px rgba(233, 30, 99, 0.3));
+            opacity: 0.35;
+            filter: drop-shadow(0 4px 8px rgba(233, 30, 99, 0.25));
             user-select: none;
+            text-shadow: 
+                0 2px 4px rgba(233, 30, 99, 0.15),
+                0 4px 8px rgba(233, 30, 99, 0.1);
         }
+
+        /* 3D эффект для сердечек */
+        .heart-float::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.3) 0%, transparent 60%);
+            border-radius: 50%;
+            pointer-events: none;
+        }
+
         @keyframes floatHeart {
             0% {
-                transform: translateY(100vh) scale(0.4) rotate(-10deg);
+                transform: translateY(100vh) scale(0.3) rotate(-10deg);
                 opacity: 0;
             }
             15% {
-                opacity: 0.5;
+                opacity: 0.4;
             }
             85% {
-                opacity: 0.5;
+                opacity: 0.4;
             }
             100% {
                 transform: translateY(-10vh) scale(1.1) rotate(15deg);
                 opacity: 0;
-            }
-        }
-
-        /* ---------- GLOW RING ---------- */
-        .glow-ring {
-            position: fixed;
-            width: 700px;
-            height: 700px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(233, 30, 99, 0.15), transparent 70%);
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            z-index: 0;
-            pointer-events: none;
-            animation: glowPulse 4s ease-in-out infinite;
-        }
-        @keyframes glowPulse {
-            0%,
-            100% {
-                transform: translate(-50%, -50%) scale(1);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translate(-50%, -50%) scale(1.2);
-                opacity: 1;
             }
         }
 
@@ -156,49 +100,38 @@
             position: relative;
             z-index: 1;
             width: 100%;
-            max-width: 620px;
-            perspective: 1500px;
-            min-height: 550px;
+            max-width: 520px;
+            perspective: 1200px;
         }
 
-        /* ---------- COVER ---------- */
+        /* ---------- COVER (как на картинке) ---------- */
         .cover {
-            background: linear-gradient(145deg, #fff9f7, #fce4ec, #fff5f5);
-            border-radius: 50px;
-            padding: 55px 40px 45px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.6), 0 0 0 2px rgba(255, 255, 255, 0.3),
-                inset 0 0 60px rgba(233, 30, 99, 0.08);
+            background: linear-gradient(160deg, #fff9f7, #fce4ec, #fff5f5);
+            border-radius: 32px;
+            padding: 50px 35px 42px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.12),
+                0 2px 4px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             text-align: center;
             transition: all 0.7s cubic-bezier(0.23, 1, 0.32, 1);
             transform: rotateY(0deg);
             cursor: pointer;
             position: relative;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
         }
 
-        .cover::before {
+        /* Тонкая рамка как на картинке */
+        .cover::after {
             content: '';
             position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            border-radius: 52px;
-            background: linear-gradient(135deg, #f9d976, #f39c12, #f9d976, #f1c40f);
-            z-index: -1;
-            background-size: 300% 300%;
-            animation: goldShine 6s ease-in-out infinite;
-            opacity: 0.4;
-        }
-        @keyframes goldShine {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid rgba(233, 30, 99, 0.08);
+            border-radius: 26px;
+            pointer-events: none;
         }
 
         .cover.hidden {
@@ -210,130 +143,136 @@
         }
 
         .cover .subtitle {
-            font-size: 13px;
-            letter-spacing: 6px;
+            font-size: 14px;
+            letter-spacing: 5px;
             color: #ad1457;
             text-transform: uppercase;
             font-weight: 300;
-            margin-bottom: 8px;
-            opacity: 0.8;
+            margin-bottom: 12px;
+            opacity: 0.7;
+            font-family: 'Georgia', serif;
         }
 
         .cover h1 {
-            font-size: 48px;
+            font-size: 44px;
             font-weight: 700;
-            background: linear-gradient(135deg, #880e4f, #e91e63, #ad1457);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin: 5px 0 6px;
+            color: #880e4f;
+            margin: 4px 0 8px;
             font-family: 'Georgia', serif;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
+            text-shadow: 0 2px 4px rgba(136, 14, 79, 0.1);
         }
 
-        .cover .heart-icon {
-            font-size: 56px;
+        /* ОБЪЁМНОЕ СЕРДЦЕ на обложке */
+        .cover .heart-3d {
+            font-size: 62px;
             display: block;
-            margin: 8px auto;
-            animation: pulse 2s ease-in-out infinite;
-            filter: drop-shadow(0 0 20px rgba(233, 30, 99, 0.3));
+            margin: 10px auto 12px;
+            animation: heartPulse3D 2.2s ease-in-out infinite;
+            filter: drop-shadow(0 8px 16px rgba(233, 30, 99, 0.3));
+            text-shadow: 
+                0 2px 4px rgba(233, 30, 99, 0.2),
+                0 8px 16px rgba(233, 30, 99, 0.15),
+                0 12px 24px rgba(233, 30, 99, 0.1);
+            transform-origin: center;
+            transition: transform 0.3s ease;
         }
 
-        @keyframes pulse {
-            0%,
-            100% {
+        .cover .heart-3d:hover {
+            transform: scale(1.08);
+        }
+
+        @keyframes heartPulse3D {
+            0%, 100% {
                 transform: scale(1) rotate(0deg);
+                filter: drop-shadow(0 8px 16px rgba(233, 30, 99, 0.3));
             }
             25% {
-                transform: scale(1.05) rotate(-3deg);
+                transform: scale(1.04) rotate(-2deg);
+                filter: drop-shadow(0 12px 24px rgba(233, 30, 99, 0.4));
             }
             75% {
-                transform: scale(1.05) rotate(3deg);
+                transform: scale(1.04) rotate(2deg);
+                filter: drop-shadow(0 12px 24px rgba(233, 30, 99, 0.4));
             }
         }
 
         .cover .message-preview {
-            font-size: 17px;
-            color: #5d4037;
+            font-size: 16px;
+            color: #6d4c41;
             font-style: italic;
-            margin: 18px 0 20px;
+            margin: 16px 0 22px;
             line-height: 1.8;
             font-weight: 300;
             letter-spacing: 0.3px;
             background: rgba(255, 255, 255, 0.5);
-            padding: 16px 20px;
-            border-radius: 30px;
-            border: 1px solid rgba(233, 30, 99, 0.1);
+            padding: 14px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(233, 30, 99, 0.06);
+            backdrop-filter: blur(2px);
         }
 
+        /* КНОПКА "Open My Heart" */
         .cover .open-btn {
             display: inline-block;
-            background: linear-gradient(135deg, #e91e63, #880e4f, #ad1457);
-            background-size: 200% 200%;
-            animation: btnShine 4s ease-in-out infinite;
+            background: linear-gradient(135deg, #e91e63, #c2185b, #ad1457);
             color: white;
             border: none;
-            padding: 16px 50px;
-            border-radius: 60px;
-            font-size: 19px;
+            padding: 15px 48px;
+            border-radius: 50px;
+            font-size: 18px;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 1.5px;
             cursor: pointer;
             transition: all 0.4s ease;
-            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.45);
+            box-shadow: 0 6px 24px rgba(233, 30, 99, 0.3);
             font-family: 'Georgia', serif;
             position: relative;
             overflow: hidden;
         }
-        @keyframes btnShine {
-            0%,
-            100% {
-                background-position: 0% 50%;
-            }
-            50% {
-                background-position: 100% 50%;
-            }
+
+        .cover .open-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.15), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .cover .open-btn:hover::before {
+            left: 100%;
         }
 
         .cover .open-btn:hover {
-            transform: scale(1.06);
-            box-shadow: 0 12px 48px rgba(233, 30, 99, 0.6);
-        }
-        .cover .open-btn:active {
-            transform: scale(0.95);
+            transform: translateY(-2px) scale(1.02);
+            box-shadow: 0 8px 32px rgba(233, 30, 99, 0.4);
         }
 
-        .cover .open-btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.2), transparent 70%);
-            opacity: 0;
-            transition: opacity 0.4s;
-            pointer-events: none;
-        }
-        .cover .open-btn:hover::after {
-            opacity: 1;
+        .cover .open-btn:active {
+            transform: scale(0.96);
         }
 
         .cover .footer-note {
-            margin-top: 22px;
+            margin-top: 20px;
             font-size: 12px;
             color: #bdbdbd;
             letter-spacing: 2px;
             text-transform: uppercase;
+            font-weight: 300;
         }
 
-        /* ---------- PAGE 1: LETTER ---------- */
+        /* ---------- ОТКРЫТКА (письмо) ---------- */
         .letter {
-            background: linear-gradient(160deg, #fffdf7, #fdf6f0, #fff9f2);
-            border-radius: 50px;
-            padding: 50px 40px 45px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.15),
-                inset 0 0 80px rgba(233, 30, 99, 0.05);
+            background: linear-gradient(165deg, #fffdf7, #fdf6f0, #fff9f2);
+            border-radius: 32px;
+            padding: 48px 35px 42px;
+            box-shadow: 
+                0 20px 60px rgba(0, 0, 0, 0.12),
+                0 2px 4px rgba(0, 0, 0, 0.04),
+                inset 0 1px 0 rgba(255, 255, 255, 0.8);
             text-align: center;
             opacity: 0;
             transform: rotateY(180deg) scale(0.7);
@@ -343,8 +282,19 @@
             width: 100%;
             top: 0;
             left: 0;
-            border: 1px solid rgba(255, 215, 0, 0.2);
-            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+        }
+
+        .letter::after {
+            content: '';
+            position: absolute;
+            top: 6px;
+            left: 6px;
+            right: 6px;
+            bottom: 6px;
+            border: 1px solid rgba(233, 30, 99, 0.06);
+            border-radius: 26px;
+            pointer-events: none;
         }
 
         .letter.visible {
@@ -354,79 +304,46 @@
             position: relative;
         }
 
-        .letter.hidden {
-            opacity: 0;
-            transform: rotateY(180deg) scale(0.7);
-            pointer-events: none;
-            position: absolute;
-            width: 100%;
-        }
-
-        .letter::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            border-radius: 50px;
-            background: url("data:image/svg+xml,%3Csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4'/%3E%3C/filter%3E%3Crect width='100' height='100' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-            pointer-events: none;
+        /* Декоративные линии как на картинке */
+        .letter .deco-line {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e91e63, transparent);
+            margin: 6px auto 14px;
             opacity: 0.3;
+            border-radius: 2px;
         }
 
-        .letter .top-decoration {
-            font-size: 32px;
-            letter-spacing: 12px;
-            color: #e91e63;
-            margin-bottom: 4px;
-            opacity: 0.6;
+        .letter .deco-line.long {
+            width: 120px;
+            opacity: 0.15;
+            margin: 16px auto 18px;
         }
 
         .letter .greeting {
-            font-size: 30px;
+            font-size: 26px;
             font-weight: 700;
-            background: linear-gradient(135deg, #880e4f, #e91e63);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
+            color: #880e4f;
             font-family: 'Georgia', serif;
             margin-bottom: 2px;
+            letter-spacing: 0.5px;
         }
 
         .letter .greeting-sub {
-            font-size: 15px;
+            font-size: 14px;
             color: #ad1457;
             font-style: italic;
-            margin-bottom: 18px;
-            letter-spacing: 3px;
-            opacity: 0.7;
-        }
-
-        .letter .divider {
-            width: 100px;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, #e91e63, #f9d976, #e91e63, transparent);
-            margin: 10px auto 24px;
-            border-radius: 4px;
-            background-size: 200% 100%;
-            animation: dividerShine 4s linear infinite;
-        }
-        @keyframes dividerShine {
-            0% {
-                background-position: -200% 0;
-            }
-            100% {
-                background-position: 200% 0;
-            }
+            letter-spacing: 2px;
+            opacity: 0.6;
+            margin-bottom: 4px;
         }
 
         .letter .love-text {
-            font-size: 17.5px;
+            font-size: 16.5px;
             line-height: 2.1;
             color: #3e2723;
             text-align: left;
-            padding: 0 10px;
+            padding: 0 6px;
             font-weight: 300;
             letter-spacing: 0.2px;
         }
@@ -435,331 +352,105 @@
             color: #880e4f;
             font-weight: 600;
         }
-        .letter .love-text .highlight {
-            background: linear-gradient(120deg, rgba(233, 30, 99, 0.1), rgba(233, 30, 99, 0.05));
-            padding: 0 6px;
-            border-radius: 4px;
-        }
 
         .letter .arabic {
-            font-size: 23px;
+            font-size: 22px;
             line-height: 2.3;
             color: #4a148c;
             font-weight: 500;
             text-align: center;
-            margin: 18px 0 16px;
+            margin: 14px 0 12px;
             font-family: 'Times New Roman', 'Amiri', serif;
             direction: rtl;
-            background: linear-gradient(135deg, rgba(233, 30, 99, 0.06), rgba(138, 43, 226, 0.06));
-            padding: 16px 20px;
-            border-radius: 24px;
-            border-right: 5px solid #e91e63;
-            border-left: 1px solid rgba(233, 30, 99, 0.1);
-            box-shadow: inset 0 0 30px rgba(233, 30, 99, 0.03);
+            background: rgba(233, 30, 99, 0.04);
+            padding: 14px 18px;
+            border-radius: 18px;
+            border-right: 3px solid rgba(233, 30, 99, 0.15);
         }
 
         .letter .arabic .dialect {
             display: block;
-            font-size: 20px;
+            font-size: 19px;
             color: #c2185b;
             margin-top: 6px;
             font-weight: 400;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
         }
 
         .letter .signature {
-            margin-top: 24px;
-            font-size: 24px;
+            margin-top: 18px;
+            font-size: 22px;
             font-weight: 600;
             color: #880e4f;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             font-family: 'Georgia', serif;
         }
 
         .letter .signature-sub {
-            font-size: 14px;
+            font-size: 13px;
             color: #bdbdbd;
-            letter-spacing: 4px;
+            letter-spacing: 3px;
             margin-top: 4px;
             text-transform: uppercase;
-        }
-
-        /* ---------- BUTTON TO PAGE 2 ---------- */
-        .next-btn {
-            display: inline-block;
-            background: linear-gradient(135deg, #f9d976, #f39c12, #f9d976);
-            background-size: 200% 200%;
-            animation: btnShine 4s ease-in-out infinite;
-            color: #4a148c;
-            border: none;
-            padding: 14px 40px;
-            border-radius: 60px;
-            font-size: 17px;
-            font-weight: 700;
-            letter-spacing: 2px;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 8px 32px rgba(243, 156, 18, 0.4);
-            font-family: 'Georgia', serif;
-            margin-top: 20px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .next-btn:hover {
-            transform: scale(1.06);
-            box-shadow: 0 12px 48px rgba(243, 156, 18, 0.6);
-        }
-        .next-btn:active {
-            transform: scale(0.95);
+            font-weight: 300;
         }
 
         .letter .small-note {
             margin-top: 18px;
-            font-size: 13px;
+            font-size: 12px;
             color: #ce93d8;
             letter-spacing: 2px;
-            border-top: 1px solid rgba(233, 30, 99, 0.1);
-            padding-top: 18px;
+            border-top: 1px solid rgba(233, 30, 99, 0.06);
+            padding-top: 16px;
             font-weight: 300;
         }
 
-        /* ---------- PAGE 2: PRINCESS ---------- */
-        .princess-page {
-            background: linear-gradient(160deg, #fff5f9, #fce4ec, #f8e8ff);
-            border-radius: 50px;
-            padding: 50px 40px 45px;
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5), 0 0 0 2px rgba(255, 215, 0, 0.2),
-                inset 0 0 80px rgba(233, 30, 99, 0.08);
-            text-align: center;
-            opacity: 0;
-            transform: rotateY(180deg) scale(0.7);
-            transition: all 0.9s cubic-bezier(0.23, 1, 0.32, 1);
-            pointer-events: none;
-            position: absolute;
-            width: 100%;
-            top: 0;
-            left: 0;
-            border: 2px solid rgba(255, 215, 0, 0.3);
-            backdrop-filter: blur(4px);
-            min-height: 500px;
-        }
-
-        .princess-page.visible {
-            opacity: 1;
-            transform: rotateY(0deg) scale(1);
-            pointer-events: all;
-            position: relative;
-        }
-
-        .princess-page .crown {
-            font-size: 72px;
-            display: block;
-            margin: 10px auto 10px;
-            animation: crownFloat 3s ease-in-out infinite;
-            filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.5));
-        }
-
-        @keyframes crownFloat {
-            0%,
-            100% {
-                transform: translateY(0) rotate(-3deg);
-            }
-            50% {
-                transform: translateY(-10px) rotate(3deg);
-            }
-        }
-
-        .princess-page .title {
-            font-size: 38px;
-            font-weight: 700;
-            background: linear-gradient(135deg, #f9d976, #f39c12, #e91e63, #f9d976);
-            background-size: 300% 300%;
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            animation: goldShine 4s ease-in-out infinite;
-            font-family: 'Georgia', serif;
-            margin: 5px 0;
-            letter-spacing: 2px;
-        }
-
-        .princess-page .subtitle {
-            font-size: 16px;
-            color: #7b1fa2;
-            font-style: italic;
-            letter-spacing: 3px;
-            margin-bottom: 20px;
-            opacity: 0.8;
-        }
-
-        .princess-page .divider {
-            width: 120px;
-            height: 3px;
-            background: linear-gradient(90deg, transparent, #f9d976, #e91e63, #f9d976, transparent);
-            margin: 10px auto 24px;
-            border-radius: 4px;
-            background-size: 200% 100%;
-            animation: dividerShine 3s linear infinite;
-        }
-
-        .princess-page .princess-text {
-            font-size: 18px;
-            line-height: 2.2;
-            color: #3e2723;
-            text-align: left;
-            padding: 0 10px;
-            font-weight: 300;
-            letter-spacing: 0.3px;
-        }
-
-        .princess-page .princess-text strong {
-            color: #880e4f;
-            font-weight: 600;
-        }
-
-        .princess-page .princess-text .gold {
-            color: #f39c12;
-            font-weight: 600;
-        }
-
-        .princess-page .arabic-princess {
-            font-size: 24px;
-            line-height: 2.4;
-            color: #4a148c;
-            font-weight: 500;
-            text-align: center;
-            margin: 18px 0 16px;
-            font-family: 'Times New Roman', 'Amiri', serif;
-            direction: rtl;
-            background: linear-gradient(135deg, rgba(255, 215, 0, 0.08), rgba(233, 30, 99, 0.06));
-            padding: 16px 20px;
-            border-radius: 24px;
-            border-right: 5px solid #f9d976;
-            border-left: 1px solid rgba(255, 215, 0, 0.2);
-        }
-
-        .princess-page .arabic-princess .dialect-gold {
-            display: block;
-            font-size: 21px;
-            color: #c2185b;
-            margin-top: 6px;
-            font-weight: 400;
-            letter-spacing: 1px;
-        }
-
-        .princess-page .signature-princess {
-            margin-top: 22px;
-            font-size: 22px;
-            font-weight: 600;
-            color: #880e4f;
-            letter-spacing: 3px;
-            font-family: 'Georgia', serif;
-        }
-
-        .princess-page .signature-princess span {
-            color: #f9d976;
-            font-weight: 300;
-        }
-
-        .princess-page .final-note {
-            margin-top: 18px;
-            font-size: 14px;
-            color: #ce93d8;
-            letter-spacing: 2px;
-            border-top: 1px solid rgba(255, 215, 0, 0.15);
-            padding-top: 18px;
-            font-weight: 300;
-        }
-
-        /* ---------- BACK BUTTON (optional) ---------- */
-        .back-btn {
+        /* ---------- ОБЪЁМНЫЕ СЕРДЕЧКИ В ТЕКСТЕ ---------- */
+        .heart-3d-inline {
             display: inline-block;
-            background: transparent;
-            color: #ad1457;
-            border: 2px solid #ad1457;
-            padding: 10px 30px;
-            border-radius: 60px;
-            font-size: 14px;
-            font-weight: 600;
-            letter-spacing: 1px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-family: 'Georgia', serif;
-            margin-top: 16px;
-            background: rgba(255, 255, 255, 0.3);
+            font-size: 1.2em;
+            animation: heartPulse3D 2.5s ease-in-out infinite;
+            filter: drop-shadow(0 4px 8px rgba(233, 30, 99, 0.2));
+            text-shadow: 0 2px 4px rgba(233, 30, 99, 0.1);
         }
 
-        .back-btn:hover {
-            background: #ad1457;
-            color: white;
-            transform: scale(1.04);
-        }
-
-        /* ---------- RESPONSIVE ---------- */
+        /* ---------- РЕСПОНСИВ ---------- */
         @media (max-width: 550px) {
             .cover {
-                padding: 35px 20px 30px;
-                border-radius: 35px;
+                padding: 35px 20px 32px;
+                border-radius: 28px;
             }
             .cover h1 {
                 font-size: 34px;
             }
+            .cover .heart-3d {
+                font-size: 48px;
+            }
             .cover .message-preview {
                 font-size: 14px;
-                padding: 12px 14px;
+                padding: 12px 16px;
             }
             .cover .open-btn {
-                padding: 14px 30px;
+                padding: 13px 32px;
                 font-size: 16px;
             }
             .letter {
                 padding: 32px 18px 30px;
-                border-radius: 35px;
+                border-radius: 28px;
             }
             .letter .love-text {
-                font-size: 15px;
-                padding: 0 4px;
+                font-size: 14.5px;
+                padding: 0 2px;
             }
             .letter .arabic {
                 font-size: 19px;
                 padding: 12px 14px;
             }
             .letter .greeting {
-                font-size: 24px;
+                font-size: 22px;
             }
-            .letter .top-decoration {
-                font-size: 24px;
-                letter-spacing: 8px;
-            }
-            .princess-page {
-                padding: 32px 18px 30px;
-                border-radius: 35px;
-            }
-            .princess-page .title {
-                font-size: 28px;
-            }
-            .princess-page .crown {
-                font-size: 54px;
-            }
-            .princess-page .princess-text {
-                font-size: 15px;
-            }
-            .princess-page .arabic-princess {
+            .letter .signature {
                 font-size: 19px;
-                padding: 12px 14px;
-            }
-            .glow-ring {
-                width: 400px;
-                height: 400px;
-            }
-            .next-btn {
-                padding: 12px 28px;
-                font-size: 15px;
-            }
-            .back-btn {
-                padding: 8px 22px;
-                font-size: 12px;
             }
         }
 
@@ -767,64 +458,56 @@
             .cover h1 {
                 font-size: 28px;
             }
-            .cover .heart-icon {
+            .cover .heart-3d {
                 font-size: 40px;
             }
+            .cover .message-preview {
+                font-size: 13px;
+                line-height: 1.6;
+            }
             .letter .love-text {
-                font-size: 13.5px;
+                font-size: 13px;
                 line-height: 1.9;
             }
             .letter .arabic {
                 font-size: 17px;
+                line-height: 2.1;
             }
-            .princess-page .title {
-                font-size: 22px;
-            }
-            .princess-page .princess-text {
-                font-size: 13px;
-            }
-            .princess-page .arabic-princess {
-                font-size: 16px;
+            .cover .open-btn {
+                padding: 11px 26px;
+                font-size: 14px;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- ✨ STARS -->
-    <div class="stars" id="starsContainer"></div>
-
-    <!-- 🌸 PETALS -->
-    <div class="petals" id="petalsContainer"></div>
-
-    <!-- ❤️ FLOATING HEARTS -->
+    <!-- ❤️ ОБЪЁМНЫЕ ПЛАВАЮЩИЕ СЕРДЕЧКИ -->
     <div class="floating-hearts" id="heartsContainer"></div>
-
-    <!-- 💫 GLOW RING -->
-    <div class="glow-ring"></div>
 
     <!-- MAIN CARD -->
     <div class="card-wrapper">
 
-        <!-- ===== COVER ===== -->
+        <!-- ===== ОБЛОЖКА ===== -->
         <div class="cover" id="cover">
             <div class="subtitle">✦ For You ✦</div>
             <h1>Lulu</h1>
-            <span class="heart-icon">💖</span>
+            <!-- ОБЪЁМНОЕ СЕРДЦЕ -->
+            <span class="heart-3d">❤️</span>
             <p class="message-preview">
                 A little message from someone<br />
                 who cares about you more than words can say...
             </p>
             <button class="open-btn" id="openBtn">✦ Open My Heart ✦</button>
-            <div class="footer-note">— click the card or the button —</div>
+            <div class="footer-note">— click to reveal —</div>
         </div>
 
-        <!-- ===== PAGE 1: LETTER ===== -->
+        <!-- ===== ПИСЬМО ===== -->
         <div class="letter" id="letter">
-            <div class="top-decoration">💕 ✧ 💕 ✧ 💕</div>
+            <div class="deco-line"></div>
             <div class="greeting">Dear Lulu,</div>
-            <div class="greeting-sub">‎ ‎ ‎ ‎ ‎ my forever favorite person</div>
-            <div class="divider"></div>
+            <div class="greeting-sub">my forever favorite person</div>
+            <div class="deco-line long"></div>
 
             <div class="love-text">
                 <strong>You</strong> are the most beautiful part of my life.<br />
@@ -833,7 +516,7 @@
                 No matter how far we are,<br />
                 you will always be the closest person to my heart.<br /><br />
                 Thank you for existing in my life.<br />
-                Thank you for being <span class="highlight">you</span>.<br />
+                Thank you for being <strong>you</strong>.<br />
                 I am truly lucky to have you.
             </div>
 
@@ -842,123 +525,128 @@
                 وجودكِ في حياتي هو أجمل نعمة من الله. <br />
                 بحبكِ اليوم، وبكرا، وإلى الأبد. <br />
                 <span class="dialect">🍯 يا عسل، أنتِ دنيتي كلها 🍯</span>
-                <span class="dialect" style="font-size:17px; color:#7b1fa2; margin-top:2px;">
-                    ❤️ قلبي كله إلك ❤️
-                </span>
             </div>
 
             <div class="signature">
-                Ivan <span style="font-weight:300; color:#e91e63;">❤️</span> Lulu
+                Ivan <span class="heart-3d-inline">❤️</span> Lulu
             </div>
             <div class="signature-sub">Always &amp; Forever</div>
 
-            <!-- BUTTON TO PAGE 2 -->
-            <button class="next-btn" id="nextBtn">👑 You Are My Princess 👑</button>
-
-            <div class="small-note">✨ made with all my heart, just for you ✨</div>
-        </div>
-
-        <!-- ===== PAGE 2: PRINCESS ===== -->
-        <div class="princess-page" id="princessPage">
-            <span class="crown">👑</span>
-            <div class="title">You Are My Princess</div>
-            <div class="subtitle">✦ my queen, my everything ✦</div>
-            <div class="divider"></div>
-
-            <div class="princess-text">
-                <strong>Lulu,</strong> you are not just a girl to me —<br />
-                you are a <span class="gold">princess</span> who deserves the whole world.<br /><br />
-                Your smile lights up my darkest days,<br />
-                your heart is the <strong>purest</strong> I've ever known.<br />
-                If I could give you the moon and the stars,<br />
-                I would do it without a second thought.<br /><br />
-                You don't need a crown to be royalty —<br />
-                because <strong>you already are</strong> in my eyes.<br />
-                Always my princess, always my <span class="gold">Lulu</span>.
-            </div>
-
-            <div class="arabic-princess">
-                أنتِ أميرتي، وملكتي، وروحي. <br />
-                وجودكِ في حياتي هو أغلى ما عندي. <br />
-                يا أجمل قصة في حياتي، أنتِ كل شيء. <br />
-                <span class="dialect-gold">👑 أنتِ ملكة قلبي، وكل يوم بحبك أكثر 👑</span>
-                <span class="dialect-gold" style="font-size:18px; color:#7b1fa2; margin-top:4px;">
-                    ❤️ يا أميرتي، أنتِ نصفي الثاني ❤️
-                </span>
-            </div>
-
-            <div class="signature-princess">
-                Always Yours, <span>Ivan</span> 👑
-            </div>
-
-            <!-- BACK BUTTON (optional) -->
-            <button class="back-btn" id="backBtn">← Back to Letter</button>
-
-            <div class="final-note">💖 forever &amp; always, my princess 💖</div>
+            <div class="small-note">✨ made with all my heart ✨</div>
         </div>
 
     </div>
 
     <script>
         // ============================================================
-        // 1. STARS
-        // ============================================================
-        function createStars() {
-            const container = document.getElementById('starsContainer');
-            for (let i = 0; i < 120; i++) {
-                const star = document.createElement('div');
-                star.className = 'star';
-                star.style.left = Math.random() * 100 + '%';
-                star.style.top = Math.random() * 100 + '%';
-                star.style.setProperty('--duration', (2 + Math.random() * 4) + 's');
-                star.style.width = (1.5 + Math.random() * 3) + 'px';
-                star.style.height = star.style.width;
-                star.style.animationDelay = (Math.random() * 5) + 's';
-                container.appendChild(star);
-            }
-        }
-        createStars();
-
-        // ============================================================
-        // 2. PETALS
-        // ============================================================
-        function createPetals() {
-            const container = document.getElementById('petalsContainer');
-            const emojis = ['🌸', '🌺', '🌷', '🌹', '💮', '🌼'];
-            for (let i = 0; i < 20; i++) {
-                const p = document.createElement('div');
-                p.className = 'petal';
-                p.textContent = emojis[Math.floor(Math.random() * emojis.length)];
-                p.style.left = Math.random() * 100 + '%';
-                p.style.fontSize = (16 + Math.random() * 24) + 'px';
-                p.style.animationDuration = (12 + Math.random() * 20) + 's';
-                p.style.animationDelay = (Math.random() * 15) + 's';
-                p.style.opacity = 0.2 + Math.random() * 0.3;
-                container.appendChild(p);
-            }
-        }
-        createPetals();
-
-        // ============================================================
-        // 3. FLOATING HEARTS
+        // 1. ПЛАВАЮЩИЕ ОБЪЁМНЫЕ СЕРДЕЧКA
         // ============================================================
         function createHearts() {
             const container = document.getElementById('heartsContainer');
             const emojis = ['❤️', '💖', '💗', '♥️', '💕', '💓'];
-            for (let i = 0; i < 16; i++) {
+            for (let i = 0; i < 20; i++) {
                 const el = document.createElement('div');
                 el.className = 'heart-float';
                 el.textContent = emojis[Math.floor(Math.random() * emojis.length)];
                 el.style.left = Math.random() * 100 + '%';
-                el.style.fontSize = (20 + Math.random() * 30) + 'px';
-                el.style.animationDuration = (12 + Math.random() * 20) + 's';
-                el.style.animationDelay = (Math.random() * 12) + 's';
+                el.style.fontSize = (20 + Math.random() * 32) + 'px';
+                el.style.animationDuration = (14 + Math.random() * 22) + 's';
+                el.style.animationDelay = (Math.random() * 14) + 's';
+                el.style.opacity = 0.2 + Math.random() * 0.25;
                 container.appendChild(el);
             }
         }
         createHearts();
 
         // ============================================================
-        // 4. CONFETTI BURST
+        // 2. КОНФЕТТИ
         // ============================================================
-        function fireConfetti(count =
+        function fireConfetti() {
+            const container = document.createElement('div');
+            container.style.cssText = `
+                        position: fixed;
+                        top: 0; left: 0;
+                        width: 100%; height: 100%;
+                        pointer-events: none;
+                        z-index: 999;
+                        overflow: hidden;
+                    `;
+            document.body.appendChild(container);
+
+            const colors = ['#e91e63', '#f06292', '#ad1457', '#f8bbd0', '#ff80ab', '#d81b60', '#f9d976', '#f39c12', '#7b1fa2'];
+            for (let i = 0; i < 70; i++) {
+                const el = document.createElement('div');
+                const size = 6 + Math.random() * 10;
+                el.style.cssText = `
+                            position: absolute;
+                            left: ${Math.random() * 100}%;
+                            width: ${size}px;
+                            height: ${size}px;
+                            background: ${colors[Math.floor(Math.random() * colors.length)]};
+                            border-radius: ${Math.random() > 0.5 ? '50%' : '2px'};
+                            animation: confettiFall ${2 + Math.random() * 3}s linear forwards;
+                            animation-delay: ${Math.random() * 1.5}s;
+                            transform: rotate(${Math.random() * 360}deg);
+                            opacity: 0;
+                            box-shadow: 0 0 6px rgba(255,255,255,0.15);
+                        `;
+                container.appendChild(el);
+            }
+
+            // Добавляем keyframes для конфетти
+            const style = document.createElement('style');
+            style.textContent = `
+                        @keyframes confettiFall {
+                            0% { 
+                                transform: translateY(-20px) rotate(0deg) scale(1); 
+                                opacity: 1; 
+                            }
+                            100% { 
+                                transform: translateY(110vh) rotate(${Math.random() > 0.5 ? '720' : '-720'}deg) scale(0.2); 
+                                opacity: 0; 
+                            }
+                        }
+                    `;
+            document.head.appendChild(style);
+
+            setTimeout(() => {
+                container.remove();
+                style.remove();
+            }, 5000);
+        }
+
+        // ============================================================
+        // 3. ОТКРЫТИЕ
+        // ============================================================
+        const cover = document.getElementById('cover');
+        const letter = document.getElementById('letter');
+        const openBtn = document.getElementById('openBtn');
+
+        function openCard() {
+            if (cover.classList.contains('hidden')) return;
+            cover.classList.add('hidden');
+            letter.classList.add('visible');
+            fireConfetti();
+            setTimeout(() => fireConfetti(), 400);
+        }
+
+        cover.addEventListener('click', (e) => {
+            if (e.target === openBtn) return;
+            openCard();
+        });
+
+        openBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openCard();
+        });
+
+        // Двойной клик по письму = ещё конфетти
+        letter.addEventListener('dblclick', () => {
+            fireConfetti();
+        });
+
+        console.log('❤️ Lulu, this card was made with love by Ivan ❤️');
+    </script>
+
+</body>
+</html>
