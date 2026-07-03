@@ -19,10 +19,8 @@
             background: #f2e8ea;
             font-family: 'Georgia', 'Times New Roman', serif;
             padding: 20px;
-            position: relative;
         }
 
-        /* ===== ОСНОВНАЯ КАРТОЧКА ===== */
         .card {
             background: #ffffff;
             max-width: 500px;
@@ -31,12 +29,18 @@
             border-radius: 20px;
             box-shadow: 0 4px 24px rgba(0, 0, 0, 0.06);
             text-align: center;
-            position: relative;
             border: 1px solid #eee6e8;
-            transition: all 0.6s ease;
         }
 
-        /* ===== ВЕРХНИЕ СЕРДЕЧКИ (рядом с Lulu) ===== */
+        .for-you {
+            font-size: 15px;
+            letter-spacing: 5px;
+            color: #999;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin-bottom: 2px;
+        }
+
         .name-row {
             display: flex;
             align-items: center;
@@ -49,18 +53,15 @@
             font-size: 38px;
             font-weight: 700;
             color: #2c2c2c;
-            font-family: 'Georgia', serif;
             letter-spacing: 1px;
         }
 
-        /* ===== ВЕКТОРНОЕ СЕРДЦЕ (НЕ ЭМОДЗИ) ===== */
         .heart-svg {
             display: inline-block;
             width: 38px;
             height: 38px;
             flex-shrink: 0;
             animation: heartPulse 2.2s ease-in-out infinite;
-            filter: drop-shadow(0 4px 12px rgba(200, 30, 40, 0.25));
         }
 
         .heart-svg svg {
@@ -69,27 +70,18 @@
             display: block;
         }
 
-        /* Анимация пульсации */
         @keyframes heartPulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            30% {
-                transform: scale(1.12);
-            }
-            60% {
-                transform: scale(1.05);
-            }
+            0%, 100% { transform: scale(1); }
+            30% { transform: scale(1.12); }
+            60% { transform: scale(1.05); }
         }
 
-        /* ===== БОЛЬШОЕ СЕРДЦЕ (как на фото) ===== */
         .big-heart {
             display: block;
             width: 80px;
             height: 80px;
             margin: 8px auto 12px;
             animation: heartPulse 2.2s ease-in-out infinite;
-            filter: drop-shadow(0 6px 20px rgba(200, 30, 40, 0.20));
         }
 
         .big-heart svg {
@@ -98,17 +90,6 @@
             display: block;
         }
 
-        /* ===== ТЕКСТ "For You," ===== */
-        .for-you {
-            font-size: 15px;
-            letter-spacing: 5px;
-            color: #999;
-            text-transform: uppercase;
-            font-weight: 300;
-            margin-bottom: 2px;
-        }
-
-        /* ===== ПРЕДПРОСМОТР ===== */
         .message-preview {
             font-size: 15px;
             color: #555;
@@ -116,10 +97,8 @@
             line-height: 1.7;
             margin: 10px 0 18px;
             font-weight: 300;
-            letter-spacing: 0.2px;
         }
 
-        /* ===== КНОПКА ===== */
         .open-btn {
             display: inline-block;
             background: #d41a2a;
@@ -134,20 +113,17 @@
             transition: all 0.3s ease;
             font-family: 'Georgia', serif;
             box-shadow: 0 4px 16px rgba(212, 26, 42, 0.25);
-            position: relative;
         }
 
         .open-btn:hover {
             background: #b81624;
             transform: translateY(-2px);
-            box-shadow: 0 6px 24px rgba(212, 26, 42, 0.35);
         }
 
         .open-btn:active {
             transform: scale(0.96);
         }
 
-        /* ===== ЛИНИЯ-РАЗДЕЛИТЕЛЬ ===== */
         .divider {
             width: 60px;
             height: 2px;
@@ -156,7 +132,6 @@
             border-radius: 2px;
         }
 
-        /* ===== РЯД СЕРДЕЧЕК (как на фото) ===== */
         .hearts-row {
             display: flex;
             justify-content: center;
@@ -165,30 +140,24 @@
             flex-wrap: wrap;
         }
 
-        .hearts-row .mini-heart {
+        .mini-heart {
             width: 18px;
             height: 18px;
             display: inline-block;
             animation: heartPulse 2.8s ease-in-out infinite;
         }
 
-        .hearts-row .mini-heart:nth-child(odd) {
-            animation-delay: 0.2s;
-        }
-        .hearts-row .mini-heart:nth-child(3n) {
-            animation-delay: 0.5s;
-        }
-        .hearts-row .mini-heart:nth-child(4n) {
-            animation-delay: 0.8s;
-        }
+        .mini-heart:nth-child(odd) { animation-delay: 0.2s; }
+        .mini-heart:nth-child(3n) { animation-delay: 0.5s; }
+        .mini-heart:nth-child(4n) { animation-delay: 0.8s; }
 
-        .hearts-row .mini-heart svg {
+        .mini-heart svg {
             width: 100%;
             height: 100%;
             display: block;
         }
 
-        /* ===== ПИСЬМО (появляется после клика) ===== */
+        /* ===== СКРЫТОЕ ПИСЬМО ===== */
         .letter-content {
             display: none;
             animation: fadeIn 0.7s ease forwards;
@@ -213,7 +182,6 @@
             font-size: 22px;
             font-weight: 700;
             color: #2c2c2c;
-            font-family: 'Georgia', serif;
             margin-bottom: 2px;
         }
 
@@ -224,7 +192,6 @@
             text-align: left;
             padding: 0 4px;
             font-weight: 300;
-            letter-spacing: 0.2px;
             margin-top: 4px;
         }
 
@@ -233,7 +200,6 @@
             font-weight: 600;
         }
 
-        /* ===== АРАБСКИЙ ТЕКСТ ===== */
         .letter-content .arabic {
             font-size: 20px;
             line-height: 2.2;
@@ -249,8 +215,7 @@
             border-right: 3px solid rgba(212, 26, 42, 0.12);
         }
 
-        /* ===== ПОДПИСЬ ===== */
-        .letter-content .signature-row {
+        .signature-row {
             display: flex;
             align-items: center;
             justify-content: center;
@@ -259,28 +224,27 @@
             flex-wrap: wrap;
         }
 
-        .letter-content .signature-row .signature-name {
+        .signature-row .signature-name {
             font-size: 20px;
             font-weight: 600;
             color: #2c2c2c;
-            font-family: 'Georgia', serif;
             letter-spacing: 1px;
         }
 
-        .letter-content .signature-row .signature-heart {
+        .signature-row .signature-heart {
             width: 24px;
             height: 24px;
             display: inline-block;
             animation: heartPulse 2.2s ease-in-out infinite;
         }
 
-        .letter-content .signature-row .signature-heart svg {
+        .signature-row .signature-heart svg {
             width: 100%;
             height: 100%;
             display: block;
         }
 
-        .letter-content .signature-sub {
+        .signature-sub {
             font-size: 13px;
             color: #999;
             letter-spacing: 3px;
@@ -289,56 +253,9 @@
             font-weight: 300;
         }
 
-        /* ===== ПЛАВАЮЩИЕ СЕРДЕЧКИ (фон) ===== */
-        .floating-hearts {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-        .heart-float {
-            position: absolute;
-            width: 24px;
-            height: 24px;
-            animation: floatUp linear infinite;
-            opacity: 0.10;
-            user-select: none;
-            filter: drop-shadow(0 2px 8px rgba(200, 30, 40, 0.08));
-        }
-
-        .heart-float svg {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        @keyframes floatUp {
-            0% {
-                transform: translateY(100vh) scale(0.3) rotate(-5deg);
-                opacity: 0;
-            }
-            20% {
-                opacity: 0.10;
-            }
-            80% {
-                opacity: 0.10;
-            }
-            100% {
-                transform: translateY(-10vh) scale(1) rotate(5deg);
-                opacity: 0;
-            }
-        }
-
-        /* ===== АДАПТИВ ===== */
         @media (max-width: 520px) {
             .card {
                 padding: 30px 18px 28px;
-                border-radius: 16px;
             }
             .name-row .name {
                 font-size: 30px;
@@ -350,9 +267,6 @@
             .big-heart {
                 width: 64px;
                 height: 64px;
-            }
-            .message-preview {
-                font-size: 14px;
             }
             .open-btn {
                 padding: 12px 32px;
@@ -368,10 +282,10 @@
             .letter-content .greeting {
                 font-size: 19px;
             }
-            .letter-content .signature-row .signature-name {
+            .signature-row .signature-name {
                 font-size: 18px;
             }
-            .hearts-row .mini-heart {
+            .mini-heart {
                 width: 14px;
                 height: 14px;
             }
@@ -380,7 +294,6 @@
         @media (max-width: 400px) {
             .card {
                 padding: 22px 14px 22px;
-                border-radius: 14px;
             }
             .name-row .name {
                 font-size: 26px;
@@ -393,14 +306,9 @@
                 width: 54px;
                 height: 54px;
             }
-            .message-preview {
-                font-size: 13px;
-                line-height: 1.5;
-            }
             .open-btn {
                 padding: 10px 24px;
                 font-size: 13px;
-                letter-spacing: 1px;
             }
             .letter-content .love-text {
                 font-size: 13px;
@@ -413,10 +321,10 @@
             .letter-content .greeting {
                 font-size: 17px;
             }
-            .letter-content .signature-row .signature-name {
+            .signature-row .signature-name {
                 font-size: 16px;
             }
-            .hearts-row .mini-heart {
+            .mini-heart {
                 width: 12px;
                 height: 12px;
             }
@@ -425,17 +333,12 @@
 </head>
 <body>
 
-    <!-- ===== ПЛАВАЮЩИЕ СЕРДЕЧКИ (ВЕКТОРНЫЕ) ===== -->
-    <div class="floating-hearts" id="heartsContainer"></div>
-
-    <!-- ===== КАРТОЧКА ===== -->
     <div class="card" id="card">
 
         <!-- ===== ОБЛОЖКА ===== -->
         <div id="coverContent">
             <div class="for-you">For You,</div>
 
-            <!-- Строка "Lulu ❤️" -->
             <div class="name-row">
                 <span class="name">Lulu</span>
                 <span class="heart-svg">
@@ -445,7 +348,6 @@
                 </span>
             </div>
 
-            <!-- БОЛЬШОЕ СЕРДЦЕ (векторное) -->
             <span class="big-heart">
                 <svg viewBox="0 0 24 24" fill="#d41a2a">
                     <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
@@ -461,10 +363,9 @@
             <div class="divider"></div>
         </div>
 
-        <!-- ===== ПИСЬМО (появляется после клика) ===== -->
+        <!-- ===== ПИСЬМО ===== -->
         <div class="letter-content" id="letterContent">
 
-            <!-- РЯД СЕРДЕЧЕК (как на фото) -->
             <div class="hearts-row">
                 <span class="mini-heart"><svg viewBox="0 0 24 24" fill="#d41a2a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
                 <span class="mini-heart"><svg viewBox="0 0 24 24" fill="#d41a2a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
@@ -498,7 +399,6 @@
                 أحبك اليوم، وغداً، وإلى الأبد.
             </div>
 
-            <!-- ПОДПИСЬ "Ivan Lulu" с сердечками -->
             <div class="signature-row">
                 <span class="signature-name">Ivan</span>
                 <span class="signature-heart">
@@ -509,7 +409,6 @@
                 <span class="signature-name">Lulu</span>
             </div>
 
-            <!-- РЯД СЕРДЕЧЕК (как на фото) -->
             <div class="hearts-row">
                 <span class="mini-heart"><svg viewBox="0 0 24 24" fill="#d41a2a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
                 <span class="mini-heart"><svg viewBox="0 0 24 24" fill="#d41a2a"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg></span>
@@ -530,7 +429,35 @@
     </div>
 
     <script>
-        // ============================================================
-        // 1. ПЛАВАЮЩИЕ ВЕКТОРНЫЕ СЕРДЕЧКИ
-        // ============================================================
-        function create
+        const coverContent = document.getElementById('coverContent');
+        const letterContent = document.getElementById('letterContent');
+        const openBtn = document.getElementById('openBtn');
+        let isOpen = false;
+
+        function openCard() {
+            if (isOpen) return;
+            isOpen = true;
+
+            coverContent.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            coverContent.style.opacity = '0';
+            coverContent.style.transform = 'scale(0.95)';
+
+            setTimeout(() => {
+                coverContent.style.display = 'none';
+                letterContent.classList.add('visible');
+            }, 400);
+        }
+
+        openBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            openCard();
+        });
+
+        document.getElementById('card').addEventListener('click', (e) => {
+            if (e.target === openBtn || e.target.closest('.open-btn')) return;
+            if (!isOpen) openCard();
+        });
+    </script>
+
+</body>
+</html>
